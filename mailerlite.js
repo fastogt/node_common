@@ -27,7 +27,8 @@ function MailerLite() {
                     'cache-control': 'no-cache'
                 }
             }, function (response) {
-                if (response.statusCode !== 200) {
+                if (response.statusCode !== 200 || response.statusCode !== 204) {
+                    // reject(response);
                     reject(new Error('Failed response: ' + response.statusCode));
                 }
 
@@ -57,7 +58,8 @@ function MailerLite() {
     return {
         addNewSubscriber: MailerLite.prototype.addNewSubscriber.bind(this),
         addNewSubscriberToGroup: MailerLite.prototype.addNewSubscriberToGroup.bind(this),
-        updateSubscriber: MailerLite.prototype.updateSubscriber.bind(this)
+        updateSubscriber: MailerLite.prototype.updateSubscriber.bind(this),
+        removeSubscriberFromGroup: MailerLite.prototype.removeSubscriberFromGroup.bind(this)
     }
 }
 
@@ -73,6 +75,19 @@ MailerLite.prototype.addNewSubscriberToGroup = function (groupId, params) {
     var data = JSON.stringify(params);
 
     return this._request('POST', path, data);
+};
+
+/**
+ * Remove single subscriber from specified group
+ *
+ * @param {String} groupId - group Id
+ * @param {Object} email - subscriber email or id
+ * @returns {Promise}
+ */
+MailerLite.prototype.removeSubscriberFromGroup = function (groupId, email) {
+    var path = '/api/v2/groups/' + groupId + '/subscribers/' + email;
+console.log(path)
+    return this._request('DELETE', path);
 };
 
 /**
