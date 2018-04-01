@@ -86,7 +86,6 @@ MailerLite.prototype.addNewSubscriberToGroup = function (groupId, params) {
  */
 MailerLite.prototype.removeSubscriberFromGroup = function (groupId, email) {
     var path = '/api/v2/groups/' + groupId + '/subscribers/' + email;
-console.log(path)
     return this._request('DELETE', path);
 };
 

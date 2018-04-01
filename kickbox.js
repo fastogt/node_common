@@ -63,7 +63,7 @@ function KickBox() {
  */
 KickBox.prototype.verifyEmail = function (email) {
     var path = '/v1/disposable/' + email;
-    
+
     return this._request('GET', path)
         .then(function (response) {
             var data = JSON.parse(response);
