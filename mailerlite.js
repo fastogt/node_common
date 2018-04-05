@@ -27,8 +27,7 @@ function MailerLite() {
                     'cache-control': 'no-cache'
                 }
             }, function (response) {
-                if (response.statusCode !== 200 || response.statusCode !== 204) {
-                    // reject(response);
+                if (response.statusCode !== 200 && response.statusCode !== 204) {
                     reject(new Error('Failed response: ' + response.statusCode));
                 }
 
