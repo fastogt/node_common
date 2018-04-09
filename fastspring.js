@@ -101,11 +101,11 @@ FastSpring.prototype.cancelSubscription = function (id) {
  * @returns {Promise} - result is Boolean
  */
 FastSpring.prototype.checkSubscriptionState = function (state, id) {
-  return this.getSubscription(id)
-      .then(function (data) {
-          var subscription = JSON.parse(data);
-          return subscription.state === state
-      })
+    return this.getSubscription(id)
+        .then(function (data) {
+            var subscription = JSON.parse(data);
+            return subscription.state === state
+        })
 };
 
 /**
@@ -116,11 +116,11 @@ FastSpring.prototype.checkSubscriptionState = function (state, id) {
  * @returns {Promise} - result is actual subscription, if subscription not change - false
  */
 FastSpring.prototype.getActualSubscription = function (state, id) {
-  return this.getSubscription(id)
-      .then(function (data) {
-          var subscription = JSON.parse(data);
-          return subscription.state !== state ? subscription.state : false
-      })
+    return this.getSubscription(id)
+        .then(function (data) {
+            var subscription = JSON.parse(data);
+            return subscription.state !== state ? subscription.state : false
+        })
 };
 
 module.exports = FastSpring;
