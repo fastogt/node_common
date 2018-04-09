@@ -8,7 +8,7 @@ module.exports = {
 
     validateEmail: function (email, done) {
         var kickBox = new KickBox();
-        var is_valid = validateEmailInput(email);
+        var is_valid = this.validateEmailInput(email);
 
         if (!is_valid) {
             done('Invalid email input.');
