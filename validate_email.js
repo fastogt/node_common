@@ -1,4 +1,4 @@
-var KickBox = require('kickbox');
+var KickBox = require('./kickbox');
 
 module.exports = {
     validateEmailInput: function (email) {
