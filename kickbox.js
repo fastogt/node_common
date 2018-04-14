@@ -67,7 +67,6 @@ KickBox.prototype.verifyEmail = function (email) {
     return this._request('GET', path)
         .then(function (response) {
             var data = JSON.parse(response);
-            console.log('verifyEmail', data.disposable)
             if (!data.hasOwnProperty('disposable')) {
                 throw new Error('Invalid data response!');
             }
